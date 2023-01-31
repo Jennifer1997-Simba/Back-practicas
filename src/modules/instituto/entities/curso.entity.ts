@@ -4,12 +4,13 @@ import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn ,
     DeleteDateColumn,
     Entity,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 
 } from "typeorm";
 
-@Entity('product',{schema: 'ventas'} )
+@Entity('carrera',{schema: ''} )
 export class ProductEntity{
     @PrimaryGeneratedColumn(
         @PrimaryGeneratedColumn(sv)
@@ -45,30 +46,29 @@ export class ProductEntity{
 
 
     //RelationShip
-@ManyToOne(() => CategoryEntity, (category)=> category.product)
-category: CategoryEntity;
+@OneToMany(() => EstudianteEntity, (estudiante)=> estudiante.curso)
+estudiante: EstudianteEntity;
 
 
 
 @Column('varchar',{
-    name:title,
-    unique:true,
-    comment: 'titulo del producto'
+    name:'nombre',
+    comment: 'nombre del curso '
 })
-title:string;
+nombre:string;
 
-@Column ('integer',{
-    name:'price',
-    comment: 'precio del producto condos decimales ',
-})
-price :number;
-
-@Column('varchar',{
+@Column ('varchar',{
     name:'description',
-    nullable :true,
-    comment:'descripcion del producto'
+    comment: 'descripcion del curso ',
 })
-description:string;
+description :string;
+
+@Column('varchar',{
+    name:'localizacion',
+    nullable :true,
+    comment:'Localizacion del curso'
+})
+localizacion:string;
 
 /*@Column('boolean',{
     name:'estate',

@@ -4,12 +4,14 @@ import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn ,
     DeleteDateColumn,
     Entity,
     ManyToOne,
+    OneToMany,
+    OneToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
 
 } from "typeorm";
 
-@Entity('category',{schema: 'ventas'} 
+@Entity('alumno',{schema: ''} 
 export class CategoryEntity{
     @PrimaryGeneratedColumn(
         @PrimaryGeneratedColumn(sv)
@@ -46,28 +48,27 @@ deletedAt:Date;
 
 
 //RelationShip
-@ManyToOne(() => CategoryEntity, (category)=> category.product)
-category: CategoryEntity;
+@ManyToOne(() => CursoEntity, (curso)=> curso.estudiante)
+curso: CursoEntity;
 
 
 
 @Column('varchar',{
-name:title,
-unique:true,
-comment: 'titulo del producto'
+name:'nombre',
+comment: 'nombre del estudiante'
 })
-title:string;
+nombre:string;
 
 @Column ('integer',{
-name:'price',
-comment: 'precio del producto condos decimales ',
+name:'cedula',
+unique:true,
+comment: 'cedula del estudiante ',
 })
-price :number;
+cedula :number;
 
 @Column('varchar',{
 name:'description',
-nullable :true,
-comment:'descripcion del producto'
+comment:'Descripcion del estudiante'
 })
 description:string;
 
@@ -107,7 +108,7 @@ return;
 this.password = await Bcrypt.hash();
 }*/
 
-}
+
 
 
 
