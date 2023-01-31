@@ -1,6 +1,7 @@
 import { create } from "domain";
 import { title } from "process";
-import { Column, CreateDateColumn ,
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn ,
+    DeleteDateColumn,
     Entity,
     ManyToOne,
     PrimaryGeneratedColumn,
@@ -15,13 +16,12 @@ export class ProductEntity{
     )
     id:number;
 
-    @CreateDateColumn(
-        {
+    @CreateDateColumn({
             name:'created_date',
             type: 'timestamptz' ,
             default:() =>'CURRENT_TIMESTAP'
 
-        }
+        })
         createdAt:Date;
 
         @UpdateDateColumn({
@@ -39,9 +39,8 @@ export class ProductEntity{
             type: 'timestamptz' ,
             nullable :true,
         })
-
         deletedAt:Date;
-    )
+    
 
 
 
