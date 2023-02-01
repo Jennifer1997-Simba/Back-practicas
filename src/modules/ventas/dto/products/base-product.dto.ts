@@ -21,6 +21,11 @@ export class BaseProductDto{
     @IsnotEmpty(isNotEmptyValidationOptions ())
     @IsString(ArrayNotEmptyValidationOptions())
     readonly imagen:string[];
+
+
+
+
+    
 }
 
 
